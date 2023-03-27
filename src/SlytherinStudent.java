@@ -54,4 +54,19 @@ public class SlytherinStudent extends HogwartsStudent {
     public void setThirstForPower(int thirstForPower) {
         this.thirstForPower = thirstForPower;
     }
+    public int ability() {
+        return cunning + determination + ambition + ingenuity + thirstForPower;
+    }
+
+    public void compareAbilitiesSlytherin(SlytherinStudent slytherinStudent) {
+        int ability1 = ability();
+        int ability2 = slytherinStudent.ability();
+        if (ability1 > ability2) {
+            System.out.printf("Слизоронец %s лучше, чем Слизоронец %s: %d VS %d%n", getName(), slytherinStudent.getName(), ability1, ability2);
+        } else if (ability2 > ability1) {
+            System.out.printf("Слизоронец %s лучше, чем Слизоронец %s: %d VS %d%n", slytherinStudent.getName(), getName(), ability2, ability1);
+        } else {
+            System.out.printf("Слизоронец %d такой же, как Слизоронец %s: %d VS %d%n", slytherinStudent.getName(), getName(), ability1, ability2);
+        }
+    }
 }
