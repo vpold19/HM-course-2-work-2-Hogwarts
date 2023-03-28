@@ -1,3 +1,5 @@
+package hogwarts;
+
 public class GryffindorStudent extends HogwartsStudent {
     private int nobility;
     private int honor;
@@ -36,20 +38,22 @@ public class GryffindorStudent extends HogwartsStudent {
         this.bravery = bravery;
     }
 
+    @Override
     public int ability() {
         return nobility + honor + bravery;
     }
 
-    public void compareAbilitiesGryffindor(GryffindorStudent gryffindorStudent) {
-        int ability1 = ability();
-        int ability2 = gryffindorStudent.ability();
-        if (ability1 > ability2) {
-            System.out.printf("Грифиндорец %s лучше, чем Грифиндорец %s: %d VS %d%n", getName(), gryffindorStudent.getName(), ability1, ability2);
-        } else if (ability2 > ability1) {
-            System.out.printf("Грифиндорец %s лучше, чем Грифиндорец %s: %d VS %d%n", gryffindorStudent.getName(), getName(), ability2, ability1);
-        } else {
-            System.out.printf("Грифиндорец %d такой же, как Грифиндорец %s: %d VS %d%n", gryffindorStudent.getName(), getName(), ability1, ability2);
-        }
+    @Override
+    public String tribeName() {
+        return "Грифиндорец";
+    }
+    public void compareGryffindor(GryffindorStudent gryffindorStudent){
+        compare(gryffindorStudent);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s; благородство: %d;  честь: %d;и храбрость: %d", super.toString(), nobility, honor, bravery);
     }
 }
 

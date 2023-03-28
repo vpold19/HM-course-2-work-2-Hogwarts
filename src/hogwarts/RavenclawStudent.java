@@ -1,3 +1,5 @@
+package hogwarts;
+
 public class RavenclawStudent extends HogwartsStudent {
     private int cleverness;
     private int wisdom;
@@ -44,19 +46,21 @@ public class RavenclawStudent extends HogwartsStudent {
     public void setCreativity(int creativity) {
         this.creativity = creativity;
     }
-
+@Override
     public int ability() {
         return cleverness + wisdom + creativity + wit;
     }
-    public void compareAbilitiesRavenclaw(RavenclawStudent ravenclawStudent) {
-        int ability1 = ability();
-        int ability2 = ravenclawStudent.ability();
-        if (ability1 > ability2) {
-            System.out.printf("Грифиндорец %s лучше, чем Грифиндорец %s: %d VS %d%n", getName(), ravenclawStudent.getName(), ability1, ability2);
-        } else if (ability2 > ability1) {
-            System.out.printf("Грифиндорец %s лучше, чем Грифиндорец %s: %d VS %d%n", ravenclawStudent.getName(), getName(), ability2, ability1);
-        } else {
-            System.out.printf("Грифиндорец %d такой же, как Грифиндорец %s: %d VS %d%n", ravenclawStudent.getName(), getName(), ability1, ability2);
-        }
+
+    @Override
+    public String tribeName() {
+        return "Когтевранец";
+    }
+    public void compareRavenclaw(RavenclawStudent ravenclawStudent){
+        compare(ravenclawStudent);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s; умны полны творчества: %d; мудры: %d; остроумны: %d; полны творчества: %d",super.toString(), cleverness, wisdom, creativity, wit);
     }
 }

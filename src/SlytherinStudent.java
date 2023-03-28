@@ -1,3 +1,5 @@
+import hogwarts.HogwartsStudent;
+
 public class SlytherinStudent extends HogwartsStudent {
     private int cunning;
     private int determination;
@@ -54,19 +56,21 @@ public class SlytherinStudent extends HogwartsStudent {
     public void setThirstForPower(int thirstForPower) {
         this.thirstForPower = thirstForPower;
     }
+    @Override
     public int ability() {
         return cunning + determination + ambition + ingenuity + thirstForPower;
     }
 
-    public void compareAbilitiesSlytherin(SlytherinStudent slytherinStudent) {
-        int ability1 = ability();
-        int ability2 = slytherinStudent.ability();
-        if (ability1 > ability2) {
-            System.out.printf("Слизоронец %s лучше, чем Слизоронец %s: %d VS %d%n", getName(), slytherinStudent.getName(), ability1, ability2);
-        } else if (ability2 > ability1) {
-            System.out.printf("Слизоронец %s лучше, чем Слизоронец %s: %d VS %d%n", slytherinStudent.getName(), getName(), ability2, ability1);
-        } else {
-            System.out.printf("Слизоронец %d такой же, как Слизоронец %s: %d VS %d%n", slytherinStudent.getName(), getName(), ability1, ability2);
-        }
+    @Override
+    public String tribeName() {
+        return "Слизоронец";
+    }
+    public void compareSlytherin(SlytherinStudent slytherinStudent){
+        compare(slytherinStudent);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s; хитрость и жажда власти: %d; , решительность: %d; амбициозность: %d; находчивость: %d; жажда власти: %d",super.toString(), cunning, determination, ambition, ingenuity, thirstForPower);
     }
 }
